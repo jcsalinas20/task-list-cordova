@@ -38,14 +38,18 @@
         <div data-role="header">
             <h1>Home</h1>
         </div>
-        <ul data-role="listview">
+        <ul data-role="listview" id="list">
             <li><a href="#page1">Page1</a></li>
             <li><a href="#page2">Page2</a></li>
             <li><a href="#page3">Page3</a></li>
         </ul>
 
         <div data-role="footer" data-position="fixed">
-            <h1>Home</h1>
+            <h1>Add new element</h1>
+            <form>
+                <input type="text" name="" i="">
+                <input type="button" value="Submit">
+            </form>
         </div><!-- /footer -->
     </div> <!-- home page -->
 
@@ -96,7 +100,7 @@
             <h1>Page3</h1>
         </div><!-- /footer -->
     </div><!-- /page3 -->
-    <script src="cordova.js"></script>
+    <!-- <script src="cordova.js"></script> -->
     <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
     <script type="text/javascript" id="jqm-trans-disable">
         /* For having a faster transition */
