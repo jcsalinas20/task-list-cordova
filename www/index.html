@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;">
+        content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com 'sha256-tkJydKrWBpGiiW0XQKgEKviapv3waKafG2+Bffcb5rA=' &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -14,7 +14,7 @@
 
     <!-- CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
     <style>
         /* For avoiding title truncation in wp8 */
@@ -39,14 +39,11 @@
             <h1>Home</h1>
         </div>
         <ul data-role="listview" id="list">
-            <li><a href="#page1">Page1</a></li>
-            <li><a href="#page2">Page2</a></li>
-            <li><a href="#page3">Page3</a></li>
         </ul>
 
         <div data-role="footer" data-position="fixed">
             <h1>Add new element</h1>
-            <form>
+            <form class="add-new-element">
                 <input type="text" name="" i="">
                 <input type="button" value="Submit">
             </form>
