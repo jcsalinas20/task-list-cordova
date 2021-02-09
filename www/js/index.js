@@ -8,28 +8,30 @@ function onDeviceReady() {
 function addNewElement(e) {
     e.preventDefault();
     var value = $("form.add-new-element input[type='text']").val();
+    
     createNewItem(value);
-
-    $("ul#list .trash").last().on("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        let element = (event.target.tagName == "I") ? $(event.target).parent() : $(event.target);
-        removeElement(element.parent().parent());
-        showToast("Elemento eliminado!");
-    });
-
-    $("ul#list .edit").last().on("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const newText = prompt("Introduce el nuevo contenido:")
-        let element = (event.target.tagName == "I") ? $(event.target).parent() : $(event.target);
-        element.parent().contents().last().replaceWith(newText);
-        showToast("Elemento actualizado!");
-    });
+    eventClick("ul#list .trash", "trash", "Elemento eliminado!");
+    eventClick("ul#list .edit", "edit", "Elemento actualizado!")
 
     $("form.add-new-element input[type='text']").val("");
     updateSession($("ul#list>li>div.ui-btn.general-box"))
     showToast("Elemento creado!");
+}
+
+function eventClick(route, type, toastText) {
+    $(route).last().on("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        let element = (event.target.tagName == "I") ? $(event.target).parent() : $(event.target);
+        if (type === "trash") {
+            removeElement(element.parent().parent());
+        } else if (type === "edit") {
+            const newText = prompt("Introduce el nuevo contenido:")
+            element.parent().contents().last().replaceWith(newText);
+        }
+        updateSession($("ul#list>li>div.ui-btn.general-box"))
+        showToast(toastText);
+    });
 }
 
 function createNewItem(text) {
@@ -48,13 +50,20 @@ function createNewItem(text) {
 }
 
 function getTasks() {
-
+    if (localStorage.getItem("items")) {
+        let items = JSON.parse(localStorage.getItem("items"));
+        for (const item of items) {
+            createNewItem(item)
+            eventClick("ul#list .trash", "trash", "Elemento eliminado!");
+            eventClick("ul#list .edit", "edit", "Elemento actualizado!")
+        }
+    }
 }
 
 function updateSession(list) {
-    let array = (sessionStorage.getItem("items")) ? JSON.parse(sessionStorage.getItem("items")) : [];
-    list.each((i) => array.push($(list[i]).contents().last()[0].textContent.replace(/\s+/g, '')))
-    sessionStorage.setItem("items", JSON.stringify(array));
+    var items = [];
+    list.each((i) => items.push($(list[i]).contents().last()[0].textContent.replace(/\s+/g, '')));
+    localStorage.setItem("items", JSON.stringify(items));
 }
 
 function removeElement(element) {
