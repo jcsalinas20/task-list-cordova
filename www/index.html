@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com 'sha256-tkJydKrWBpGiiW0XQKgEKviapv3waKafG2+Bffcb5rA=' &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;">
+    content="default-src 'sha256-WS17NXgKdGJCBp+4+Rg1buw/ZZ2gs3f1U6lOwLvKvmM=' *; style-src 'sha256-oHuiDtiIyMZ4fv481TksWV3DfQPDMz3QJmu31fFm8O4=' *; media-src *; font-src *; img-src &apos;self&apos; data: content:;">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -13,16 +13,14 @@
     <title>List View</title>
 
     <!-- CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
     <style>
-        /* For avoiding title truncation in wp8 */
         .ui-header .ui-title {
             overflow: visible !important;
         }
 
-        /* For fixing the absolute position issue for the default cordova gen page*/
         #cjp-accordion1 .app {
             left: 5px !important;
             margin: 5px !important;
@@ -33,7 +31,6 @@
 </head>
 
 <body>
-    <!-- page 1 -->
     <div data-role="page" id="homePage">
         <div data-role="header">
             <h1>Home</h1>
@@ -41,66 +38,19 @@
         <ul data-role="listview" id="list">
         </ul>
 
-        <div data-role="footer" data-position="fixed">
-            <h1>Add new element</h1>
+        <footer class="ui-footer ui-bar-inherit ui-footer-fixed slideup">
+            <h1 class="ui-title">Add new element</h1>
             <form class="add-new-element">
                 <input type="text" name="" i="">
-                <input type="button" value="Submit">
+                <input type="submit" value="Submit">
             </form>
-        </div><!-- /footer -->
-    </div> <!-- home page -->
+        </footer>
+    </div>
 
-    <!-- page 1 -->
-    <div data-role="page" id="page1">
-        <div data-role="header">
-            <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
-            <h1>Page1</h1>
-        </div>
 
-        <div class="ui-content">
-            <p>Page 1 content goes here</p>
-        </div><!-- end page 1 content -->
-
-        <div data-role="footer" data-position="fixed">
-            <h1>Page1</h1>
-        </div><!-- /footer -->
-    </div><!-- /page1 -->
-
-    <!-- page 2 -->
-    <div data-role="page" id="page2">
-        <div data-role="header">
-            <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
-            <h1>Page2</h1>
-        </div>
-
-        <div class="ui-content">
-            <p>This is page 2</p>
-        </div><!-- end page 2 content -->
-
-        <div data-role="footer" data-position="fixed">
-            <h1>Page2</h1>
-        </div><!-- /footer -->
-    </div><!-- /page2 -->
-
-    <!-- page 3 -->
-    <div data-role="page" id="page3">
-        <div data-role="header">
-            <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
-            <h1>Page3</h1>
-        </div>
-
-        <div class="ui-content">
-            <p>This is page 3</p>
-        </div><!-- end page 3 content -->
-
-        <div data-role="footer" data-position="fixed">
-            <h1>Page3</h1>
-        </div><!-- /footer -->
-    </div><!-- /page3 -->
-    <!-- <script src="cordova.js"></script> -->
     <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" id="jqm-trans-disable">
-        /* For having a faster transition */
         $(document).on("mobileinit", function () {
             $.mobile.defaultPageTransition = "none";
             $.mobile.defaultDialogTransition = "none";
