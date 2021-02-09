@@ -139,6 +139,22 @@ form.add-new-element {
     justify-content: center;
 }
 
+form.add-new-element input[name='task-name'] {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    height: 0;
+    margin: 0;
+    box-sizing: unset;
+    padding: 0 5px;
+}
+
+form.add-new-element input[name='task-name']:focus {
+    border-bottom: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
 .ui-btn.ui-input-btn.ui-corner-all.ui-shadow {
     padding: 12px;
     margin: 6px 10px;
@@ -149,10 +165,8 @@ h1.ui-title {
     font-weight: bold;
 }
 
-.ui-btn.general-box {
-    display: flex;
-    align-items: center;
-    cursor: default;
+.toast {
+    text-transform: capitalize;
 }
 
 .ui-btn.general-box {
@@ -160,6 +174,10 @@ h1.ui-title {
     border-color: #ddd;
     color: #333;
     box-shadow: 0 0 2px 0px #000000;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    text-transform: capitalize;
 }
 
 .ui-input-btn.box-btn {
@@ -171,11 +189,11 @@ h1.ui-title {
     cursor: pointer;
 }
 
-.ui-input-btn .trash {
+.ui-input-btn .trash i {
     color: #ff5b5b;
 }
 
-.ui-input-btn .edit {
+.ui-input-btn .edit i {
     color: #ff5b5b;
 }
 

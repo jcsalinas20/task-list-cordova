@@ -12,28 +12,42 @@ function addNewElement(e) {
         `<li class="ui-last-child">
             <div class="ui-btn general-box">
                 <div class="ui-input-btn box-btn trash">
-                    <i class="material-icons trash">delete_forever</i>
+                    <i class="material-icons">delete_forever</i>
                 </div>
                 <div class="ui-input-btn box-btn edit">
-                    <i class="material-icons edit">edit</i>
+                    <i class="material-icons">edit</i>
                 </div>
                 ${value}
             </div>
         </li>`);
 
-    $("ul#list trash").last().on("click", (event) => {
+    $("ul#list .trash").last().on("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        let element = (event.target.tagName == "I") ? $(event.target).parent() : $(event.target);
+        element.parent().parent().hide("slide", {
+            direction: "left"
+        }, 500, function () {
+            element.parent().parent().remove();
+        });
+        M.toast({
+            html: 'Elemento eliminado!',
+            displayLength: 2000
+        })
+    });
+
+    $("ul#list .edit").last().on("click", (event) => {
         event.preventDefault();
         event.stopPropagation();
         let element = (event.target.tagName == "path") ? $(event.target).parent().parent() : (event.target.tagName == "svg") ? $(event.target).parent() : $(event.target);
         element.parent().parent().remove();
     });
 
-    $("ul#list edit").last().on("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        let element = (event.target.tagName == "path") ? $(event.target).parent().parent() : (event.target.tagName == "svg") ? $(event.target).parent() : $(event.target);
-        element.parent().parent().remove();
-    });
+
+    M.toast({
+        html: 'Elemento creado!',
+        displayLength: 2000
+    })
 }
 
 $(function () {
