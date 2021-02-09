@@ -8,29 +8,38 @@ function onDeviceReady() {
 function addNewElement(e) {
     e.preventDefault();
     var value = $("form.add-new-element input[type='text']").val();
-    
-    createNewItem(value);
-    eventClick("ul#list .trash", "trash", "Elemento eliminado!");
-    eventClick("ul#list .edit", "edit", "Elemento actualizado!")
 
-    $("form.add-new-element input[type='text']").val("");
-    updateSession($("ul#list>li>div.ui-btn.general-box"))
-    showToast("Elemento creado!");
+    if (value) {
+        createNewItem(value);
+        eventClick("ul#list .trash", "trash", "Elemento eliminado!");
+        eventClick("ul#list .edit", "edit", "Elemento actualizado!")
+
+        $("form.add-new-element input[type='text']").val("");
+        updateSession($("ul#list>li>div.ui-btn.general-box"))
+        showToast("Elemento creado!");
+    }
 }
 
 function eventClick(route, type, toastText) {
     $(route).last().on("click", (event) => {
+        var showToastMessage = false;
         event.preventDefault();
         event.stopPropagation();
         let element = (event.target.tagName == "I") ? $(event.target).parent() : $(event.target);
         if (type === "trash") {
-            removeElement(element.parent().parent());
+            if (confirm("Deseas seguir con la operación?")) {
+                removeElement(element.parent().parent());
+                showToastMessage = true;
+            }
         } else if (type === "edit") {
             const newText = prompt("Introduce el nuevo contenido:")
-            element.parent().contents().last().replaceWith(newText);
+            if (newText) {
+                element.parent().contents().last().replaceWith(newText);
+                showToastMessage = true;
+            }
         }
         updateSession($("ul#list>li>div.ui-btn.general-box"))
-        showToast(toastText);
+        if (showToastMessage) showToast(toastText);
     });
 }
 
