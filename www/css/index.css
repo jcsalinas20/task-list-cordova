@@ -189,12 +189,12 @@ h1.ui-title {
     cursor: pointer;
 }
 
-.ui-input-btn .trash i {
+i.icon-trash {
     color: #ff5b5b;
 }
 
-.ui-input-btn .edit i {
-    color: #ff5b5b;
+i.icon-edit {
+    color: #4169e1;
 }
 
 footer {
