@@ -2,4 +2,4 @@
 
 Ejercicio clase: App Móvil, listado de palabras con CRUD
 
-![homePage](http://imgfz.com/i/OGMdJaQ.png)
+![homePage](https://raw.githubusercontent.com/jcsalinas20/task-list-cordova/main/images/home.png)
